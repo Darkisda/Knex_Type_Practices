@@ -8,7 +8,7 @@ class ClientsController {
         
         try {
 
-            const result = await knex('clients')
+            const result = await knex('clients').where('deleted_at', null)
 
             return reponse.json(result)
 
@@ -43,7 +43,7 @@ class ClientsController {
                 query.where('clients.user_id', user_id)
                     .join('users', 'users._id', '=', 'clients.user_id')
                     .select('clients.*', 'users.userName')
-                    .where('users.deleted_at', null)
+                    .where('clients.deleted_at', null)
                 
                 const [countClients] = await knex('clients')
                     .count()
@@ -97,8 +97,57 @@ class ClientsController {
             return response.status(201).json({okay:true})
 
         } catch (err) {
-            console.log(err)
+
             return response.status(400).json(err)
+
+        }
+    }
+
+    async delete(request: Request, response: Response) {
+        
+        const { client_id } = request.params
+
+        try {
+            
+            const trx = await knex.transaction()
+
+            await trx('clients')
+                .where('clients.client_id', client_id)
+                .update('deleted_at', new Date())
+
+            trx.commit()
+
+            return response.status(200).json({okay: true})
+
+        } catch (err) {
+
+            return response.json(err)
+
+        }
+    }
+
+    async update(request: Request, response: Response) {
+        try {
+
+            const {
+                clientEmail,
+                clientWhatsapp,
+            } = request.body
+
+            const { client_id } = request.params
+
+            const trx = await knex.transaction()
+
+            await trx('clients').update({clientEmail, clientWhatsapp})
+                .where('clients.client_id', client_id)
+
+            await trx.commit()
+
+            return response.status(200).json({okay: true})
+
+        } catch(err) {
+
+            return response.json(err)
 
         }
     }

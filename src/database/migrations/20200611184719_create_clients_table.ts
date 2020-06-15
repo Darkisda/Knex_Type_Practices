@@ -19,7 +19,7 @@ export async function up(knex: Knex) {
             .onDelete('CASCADE')
 
         table.timestamp('created_at').defaultTo(knex.fn.now())
-        table.timestamp('updated_ap').defaultTo(knex.fn.now())
+        table.timestamp('updated_at').defaultTo(knex.fn.now())
 
     }).then(()=> knex.raw(onUpdateTrigger('clients')))
 
