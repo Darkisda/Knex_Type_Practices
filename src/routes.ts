@@ -25,11 +25,17 @@ routes.get('/users/:user_id/clients', ClientsController.listByID)
 
 routes.post('/users/:user_id', ClientsController.create)
 
-routes.delete('/users/:user_id/clients/:client_id', ClientsController.delete)
-
 routes.put('/users/:user_id/clients/:client_id', ClientsController.update)
+
+routes.delete('/users/:user_id/clients/:client_id', ClientsController.delete)
 
 //Orders Routes
 routes.get('/orders', OrdersController.index)
+
+routes.post('/users/:user_id/clients/:client_id', OrdersController.create)
+
+routes.put('/users/:user_id/clients/:client_id/orders/:order_id', OrdersController.update)
+
+routes.delete('/users/:user_id/clients/:client_id/orders/:order_id', OrdersController.delete)
 
 export default routes
