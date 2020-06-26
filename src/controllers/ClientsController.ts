@@ -32,7 +32,7 @@ class ClientsController {
             const findUser = users.find(user => user._id == user_id)
 
             if(findUser === undefined) {
-                return response.json({"message":"Cannot find UserID"})
+                return response.json({message:"Cannot find UserID"})
             }
             else {
                 const query = knex('clients')
