@@ -4,7 +4,7 @@ import * as Knex from "knex";
 export async function up(knex: Knex) {
     return knex.schema.alterTable('orders', table => {
         table.boolean('completed').defaultTo(false)
-        table.timestamp('deleted_at')
+        table.boolean('deleted_at').defaultTo(false)
     })
 }
 

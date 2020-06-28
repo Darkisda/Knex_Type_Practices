@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
     return knex.schema.createTable('toDoOrders', table => {
         table.increments('to-do_id').primary()
         table.string('tasks').notNullable()
-        table.integer('status').defaultTo(0)
+        table.boolean('status').defaultTo(false)
 
         table.integer('order_id')
             .references('orders.order_id')

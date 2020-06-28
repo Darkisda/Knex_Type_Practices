@@ -3,7 +3,7 @@ import * as Knex from "knex";
 
 export async function up(knex: Knex) {
     return knex.schema.alterTable('users', table => {
-        table.timestamp('deleted_at')
+        table.boolean('deleted_at').defaultTo(false)
     })
 }
 

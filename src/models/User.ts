@@ -1,6 +1,5 @@
 export default class User {
     
-    private _id : number
     private userName : string
     private userLast_name : string
     private userCompany : string
@@ -9,8 +8,7 @@ export default class User {
     private userCity : string
     private userUF : string
 
-    constructor(id: number, username: string, userlast_name: string, usercompany: string, useremail: string, userwpp: string, usercity: string, useruf: string) {
-        this._id = id
+    constructor(username: string, userlast_name: string, usercompany: string, useremail: string, userwpp: string, usercity: string, useruf: string) {
         this.userName = username
         this.userLast_name = userlast_name
         this.userCompany = usercompany
@@ -18,11 +16,6 @@ export default class User {
         this.userWhatsapp = userwpp
         this.userCity = usercity
         this.userUF = useruf
-    }
-
-    
-    public getId() : number {
-        return this._id
     }
 
     public getUserName() : string {
@@ -52,11 +45,7 @@ export default class User {
     public getUserUF() : string {
         return this.userUF
     }
-    
-    public setID(id : number) {
-        this._id = id;
-    }
-    
+
     public setUserName(username : string) {
         this.userName = username;
     }

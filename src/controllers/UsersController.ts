@@ -2,8 +2,10 @@ import { Request, Response } from 'express'
 
 import knex from '../database/connection'
 
+import User from '../models/User'
+import UserInterface from '../utils/interfaces/UserInterface'
+
 class UserController {
-    
     async index(request: Request, reponse: Response) {
         try {
 
@@ -34,15 +36,7 @@ class UserController {
             
             const trx =  await knex.transaction()
 
-            const user = {
-                userName,
-                userLast_name,
-                userCompany,
-                userEmail,
-                userWhatsapp,
-                userCity,
-                userUF,
-            }
+            let user = new User(userName, userLast_name, userCompany, userEmail, userWhatsapp, userCity, userUF)
 
             await trx('users').insert(user)
 
