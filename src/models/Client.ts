@@ -1,14 +1,14 @@
 export default class Client {
-    private _id :Number
-    private user_id : Number
-    private clientName : String
-    private clientLastName : String
-    private clientEmail : String
-    private clientWhatsapp : String
-    private clientCity : String
-    private clientUF : String
+    private _id :number
+    private user_id : number
+    private clientName : string
+    private clientLastName : string
+    private clientEmail : string
+    private clientWhatsapp : string
+    private clientCity : string
+    private clientUF : string
 
-    constructor(id: Number, clientname: String, clientlast_name: String, clientemail: String, clientwpp: String, clientcity: String, clientuf: String, userid: Number) {
+    constructor(id: number, clientname: string, clientlast_name: string, clientemail: string, clientwpp: string, clientcity: string, clientuf: string, userid: number) {
         this._id = id
         this.clientName = clientname
         this.clientLastName = clientlast_name
@@ -20,59 +20,59 @@ export default class Client {
     }
 
     
-    public getID() : Number {
+    public getID() : number {
         return this._id
     }
     
-    public getClientName() : String {
+    public getClientName() : string {
         return this.clientName
     }
     
-    public getClientLastName() : String {
+    public getClientLastName() : string {
         return this.clientLastName
     }
     
-    public getClientEmail() : String {
+    public getClientEmail() : string {
         return this.clientEmail
     }
     
-    public getClientWhatsapp() : String {
+    public getClientWhatsapp() : string {
         return this.clientWhatsapp
     }
     
-    public getClientCity() : String {
+    public getClientCity() : string {
         return this.clientCity
     }
     
-    public getClientUF() : String {
+    public getClientUF() : string {
         return this.clientUF
     }
     
-    public getClientUser_ID() : Number {
+    public getClientUser_ID() : number {
         return this.user_id
     }
     
-    public setClientName(name : String) {
+    public setClientName(name : string) {
         this.clientName = name;
     }
     
-    public setClientLastName(lastname : String) {
+    public setClientLastName(lastname : string) {
         this.clientLastName = lastname;
     }
     
-    public setClientEmail(email : String) {
+    public setClientEmail(email : string) {
         this.clientEmail = email;
     }
     
-    public setClientWhatsapp(wpp : String) {
+    public setClientWhatsapp(wpp : string) {
         this.clientWhatsapp = wpp;
     }
     
-    public setClientCity(city : String) {
+    public setClientCity(city : string) {
         this.clientCity = city;
     }
     
-    public setClientUF(uf : String) {
+    public setClientUF(uf : string) {
         this.clientUF = uf;
     }
 }

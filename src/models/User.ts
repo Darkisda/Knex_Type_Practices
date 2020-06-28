@@ -1,15 +1,15 @@
 export default class User {
     
-    private _id : Number
-    private userName : String
-    private userLast_name : String
-    private userCompany : String
-    private userEmail : String
-    private userWhatsapp : String
-    private userCity : String
-    private userUF : String
+    private _id : number
+    private userName : string
+    private userLast_name : string
+    private userCompany : string
+    private userEmail : string
+    private userWhatsapp : string
+    private userCity : string
+    private userUF : string
 
-    constructor(id: Number, username: String, userlast_name: String, usercompany: String, useremail: String, userwpp: String, usercity: String, useruf: String) {
+    constructor(id: number, username: string, userlast_name: string, usercompany: string, useremail: string, userwpp: string, usercity: string, useruf: string) {
         this._id = id
         this.userName = username
         this.userLast_name = userlast_name
@@ -21,67 +21,67 @@ export default class User {
     }
 
     
-    public getId() : Number {
+    public getId() : number {
         return this._id
     }
 
-    public getUserName() : String {
+    public getUserName() : string {
         return this.userName
     }
     
-    public getUserLast_name() : String {
+    public getUserLast_name() : string {
         return this.userLast_name
     }
 
-    public getUserCompany() : String {
+    public getUserCompany() : string {
         return this.userCompany
     }
 
-    public getUserEmail() : String {
+    public getUserEmail() : string {
         return this.userEmail
     }
 
-    public getUserWhatsapp() : String {
+    public getUserWhatsapp() : string {
         return this.userWhatsapp
     }
 
-    public getUserCity() : String {
+    public getUserCity() : string {
         return this.userCity
     }
 
-    public getUserUF() : String {
+    public getUserUF() : string {
         return this.userUF
     }
     
-    public setID(id : Number) {
+    public setID(id : number) {
         this._id = id;
     }
     
-    public setUserName(username : String) {
+    public setUserName(username : string) {
         this.userName = username;
     }
     
-    public setUserLast_Name(lastname : String) {
+    public setUserLast_Name(lastname : string) {
         this.userLast_name = lastname;
     }
     
-    public setUserCompany(company : String) {
+    public setUserCompany(company : string) {
         this.userCompany = company;
     }
     
-    public setUserEmail(email : String) {
+    public setUserEmail(email : string) {
         this.userEmail = email;
     }
     
-    public setUserWhatsapp(wpp : String) {
+    public setUserWhatsapp(wpp : string) {
         this.userWhatsapp = wpp;
     }
     
-    public setUserCity(city : String) {
+    public setUserCity(city : string) {
         this.userCity = city;
     }
     
-    public setUserUF(uf : String) {
+    public setUserUF(uf : string) {
         this.userUF = uf;
     }
 }

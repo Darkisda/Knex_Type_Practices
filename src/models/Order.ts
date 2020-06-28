@@ -1,27 +1,27 @@
 export default class Order {
-    private _id : Number
-    private description : String
-    private client_id : Number
+    private _id : number
+    private description : string
+    private client_id : number
 
-    constructor(id: Number, desc: String, clientid: Number) {
+    constructor(id: number, desc: string, clientid: number) {
         this._id = id
         this.description = desc
         this.client_id = clientid
     }
 
-    public getID() : Number {
+    public getID() : number {
         return this._id
     }
     
-    public getDescription() : String {
+    public getDescription() : string {
         return this.description
     }
     
-    public getClientID() : Number {
+    public getClientID() : number {
         return this.client_id
     }
     
-    public setDescription(desc : String) {
+    public setDescription(desc : string) {
         this.description = desc;
     }
     
