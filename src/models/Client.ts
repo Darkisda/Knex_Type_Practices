@@ -52,10 +52,6 @@ export default class Client {
         return this.user_id
     }
     
-    public setID(id : Number) {
-        this._id = id;
-    }
-    
     public setClientName(name : String) {
         this.clientName = name;
     }
