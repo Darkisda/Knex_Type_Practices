@@ -9,7 +9,7 @@ class UserController {
     async index(request: Request, reponse: Response) {
         try {
 
-            const result = await knex('users').where('deleted_at', null)
+            const result = await knex('users').where('deleted', false)
 
             return reponse.json(result)
 
@@ -36,7 +36,7 @@ class UserController {
             
             const trx =  await knex.transaction()
 
-            let user = new User(userName, userLast_name, userCompany, userEmail, userWhatsapp, userCity, userUF)
+            const user = new User(userName, userLast_name, userCompany, userEmail, userWhatsapp, userCity, userUF)
 
             await trx('users').insert(user)
 
@@ -82,9 +82,9 @@ class UserController {
             
             const trx = await knex.transaction()
 
-            await trx('users')
+            await trx<UserInterface>('users')
                 .where('users._id', user_id)
-                .update('deleted_at', new Date())
+                .update('deleted_at', true)
 
             trx.commit()
 

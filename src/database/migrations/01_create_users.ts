@@ -1,8 +1,5 @@
 import * as Knex from "knex";
 
-const {onUpdateTrigger} = require ('../../../knexfile')
-
-
 export async function up(knex: Knex) {
     return knex.schema.createTable('users', table => {
         table.increments('_id').primary()
@@ -15,9 +12,10 @@ export async function up(knex: Knex) {
         table.string('userUF', 2).notNullable()
 
         table.timestamp('created_at').defaultTo(knex.fn.now())
-        table.timestamp('updated_ap').defaultTo(knex.fn.now())
+        table.timestamp('updated_at').defaultTo(knex.fn.now())
+        table.boolean('deleted').defaultTo(false)
 
-    }).then(()=> knex.raw(onUpdateTrigger('users')))
+    })
 }
 
 

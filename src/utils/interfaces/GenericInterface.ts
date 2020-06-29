@@ -6,4 +6,5 @@ export default interface GenericInterface {
     whatsapp : string
     city : string
     uf : string
+    deleted_at: boolean
 }
