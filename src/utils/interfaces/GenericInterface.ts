@@ -1,10 +1,10 @@
 export default interface GenericInterface {
-    _id : number
+    _id : string
     firstName : string
     lastName : string
     email : string
     whatsapp : string
     city : string
     uf : string
-    deleted_at: boolean
+    deleted: boolean
 }

@@ -18,6 +18,8 @@ routes.post('/users', UsersController.create)
 
 routes.put('/users/:user_id', UsersController.update)
 
+routes.put('/users/deleteds/:user_id', UsersController.reactive)
+
 routes.delete('/users/:user_id', UsersController.delete)
 
 //Clients Routes
