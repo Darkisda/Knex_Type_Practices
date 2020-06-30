@@ -32,7 +32,6 @@ class ToDoController {
             query.where('toDoOrders.order_id', order_id)
                 .join('orders', 'orders.order_id', '=', 'toDoOrders.order_id')
                 .select('toDoOrders.*', 'orders.order_id')
-                .where('orders.deleted_at', null)
 
             const [countToDo] = await knex('toDoOrders')
                 .count()
@@ -55,7 +54,6 @@ class ToDoController {
         try {
 
             const { order_id } = request.params
-
             const { tasks } = request.body
 
             const NewTodo = { tasks, order_id }
@@ -68,6 +66,60 @@ class ToDoController {
 
             return response.status(201).json({okay: true})
 
+        } catch (err) {
+            
+            return response.status(400).json(err)
+
+        }
+    }
+
+    async update(request: Request, response: Response) {
+        try {
+
+            const { todo_id } = request.params
+            const { status, tasks } = request.body
+
+            const trx = await knex.transaction()
+            
+            if(status === true){
+                
+                await trx('toDoOrders')
+                    .update('status', status)
+                    .where('toDoOrders.to-do_id', todo_id)
+            
+            } else {
+
+                await trx('toDoOrders')
+                    .update({tasks})
+                    .where('toDoOrders.to-do_id', todo_id)
+
+            }
+
+            await trx.commit()
+
+            return response.status(200).json({message: 'okay'})
+
+        } catch (err) {
+            
+            return response.status(400).json(err)
+
+        }
+    }
+
+    async delete(request: Request, response: Response) {
+        try {
+            
+            const { todo_id } = request.params
+
+            const trx = await knex.transaction()
+
+            await trx('toDoOrders')
+                .where('to-do_id', todo_id)
+                .del()
+
+            await trx.commit()
+
+            return response.status(200).json({okay: true})
         } catch (err) {
             
             return response.status(400).json(err)

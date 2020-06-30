@@ -55,8 +55,13 @@ routes.delete('/users/:user_id/clients/:client_id/orders/:order_id', OrdersContr
 //To Do Orders routes
 
 routes.get('/todo', ToDoController.index )
+
 routes.get('/users/:user_id/clients/:client_id/orders/:order_id/todo', ToDoController.list)
 
 routes.post('/users/:user_id/clients/:client_id/orders/:order_id', ToDoController.create)
+
+routes.put('/users/:user_id/clients/:client_id/orders/:order_id/todo/:todo_id', ToDoController.update)
+
+routes.delete('/users/:user_id/clients/:client_id/orders/:order_id/todo/:todo_id', ToDoController.delete)
 
 export default routes
