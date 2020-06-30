@@ -1,13 +1,14 @@
 import { Request, Response } from 'express'
 
 import knex from '../database/connection'
+import OrderInterface from '../utils/interfaces/OrderInterface'
 
 class OrdersController {
     
     async index(request: Request, response: Response) {
         try{
 
-            const result = await knex('orders').where('deleted_at', null)
+            const result = await knex('orders')
 
             return response.json(result)
             
@@ -32,7 +33,7 @@ class OrdersController {
             query.where('orders.client_id', client_id)
                 .join('clients', 'clients.client_id', '=', 'orders.client_id')
                 .select('orders.*', 'clients.clientName')
-                .where('orders.deleted_at', null)
+                .where('orders.deleted', false)
 
             const [countOrders] = await knex('orders')
                 .count()
@@ -108,7 +109,7 @@ class OrdersController {
 
             await trx('orders')
                 .where('orders.order_id', order_id)
-                .update('deleted_at', new Date())
+                .update('deleted', true)
 
             trx.commit()
 
@@ -124,16 +125,9 @@ class OrdersController {
     async listDeleteds(request: Request, response: Response) {
         try {
 
-            const orders = await knex('orders')
-            let deletedsOrders = []
+            const result = await knex('orders').where('deleted', true)
 
-            orders.filter(order => {
-                if(order.deleted_at !== null) {
-                    deletedsOrders.push(order)
-                }
-            })
-
-            return response.json(deletedsOrders)
+            return response.json(result)
 
         } catch (err) {
 
@@ -151,7 +145,9 @@ class OrdersController {
 
             await trx('orders')
                 .where('orders.order_id', order_id)
-                .update('deleted_at', true)
+                .update('deleted', false)
+
+            await trx.commit()
 
             return response.status(200).json({okay: true})
 

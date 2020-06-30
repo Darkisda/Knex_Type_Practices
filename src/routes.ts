@@ -37,13 +37,16 @@ routes.delete('/users/:user_id/clients/:client_id', ClientsController.delete)
 
 //Orders Routes
 routes.get('/orders', OrdersController.index)
+
 routes.get('/users/:user_id/clients/:client_id', OrdersController.list)
-routes.get('/users/:user_id/clients/:client_id/orders', OrdersController.listDeleteds)
+
+routes.get('/users/:user_id/clients/:client_id/deleteds', OrdersController.listDeleteds)
 
 routes.post('/users/:user_id/clients/:client_id', OrdersController.create)
 
 routes.put('/users/:user_id/clients/:client_id/orders/:order_id', OrdersController.update)
-routes.put('/users/:user_id/clients/:client_id/orders/deleted/:order_id', OrdersController.ressurge)
+
+routes.put('/users/:user_id/clients/:client_id/orders/deleteds/:order_id', OrdersController.ressurge)
 
 routes.delete('/users/:user_id/clients/:client_id/orders/:order_id', OrdersController.delete)
 
