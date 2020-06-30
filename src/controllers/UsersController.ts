@@ -95,7 +95,7 @@ class UserController {
 
             if(findUser === undefined) {
 
-                return response.status(400).json({message: "User dont exists"})
+                return response.status(400).json({message: "UserID dont exists"})
             
             } else {
 
@@ -135,7 +135,7 @@ class UserController {
                 
             await trx.commit()
 
-            return response.status(200).json({message: "Usuário reativado com sucesso!"})
+            return response.status(200).json({message: "User reactived!"})
 
         } catch (err) {
 

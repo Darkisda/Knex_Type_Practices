@@ -1,5 +1,4 @@
 export default class Client {
-    private _id :number
     private user_id : number
     private clientName : string
     private clientLastName : string
@@ -8,8 +7,7 @@ export default class Client {
     private clientCity : string
     private clientUF : string
 
-    constructor(id: number, clientname: string, clientlast_name: string, clientemail: string, clientwpp: string, clientcity: string, clientuf: string, userid: number) {
-        this._id = id
+    constructor(clientname: string, clientlast_name: string, clientemail: string, clientwpp: string, clientcity: string, clientuf: string, userid: number) {
         this.clientName = clientname
         this.clientLastName = clientlast_name
         this.clientEmail = clientemail
@@ -19,11 +17,6 @@ export default class Client {
         this.user_id = userid
     }
 
-    
-    public getID() : number {
-        return this._id
-    }
-    
     public getClientName() : string {
         return this.clientName
     }

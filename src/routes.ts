@@ -24,11 +24,14 @@ routes.delete('/users/:user_id', UsersController.delete)
 
 //Clients Routes
 routes.get('/clients', ClientsController.index)
+
 routes.get('/users/:user_id/clients', ClientsController.listByID)
 
 routes.post('/users/:user_id', ClientsController.create)
 
 routes.put('/users/:user_id/clients/:client_id', ClientsController.update)
+
+routes.put('/users/:user_id/clients/deleteds/:client_id', ClientsController.reactive)
 
 routes.delete('/users/:user_id/clients/:client_id', ClientsController.delete)
 
